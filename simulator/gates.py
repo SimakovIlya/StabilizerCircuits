@@ -50,10 +50,10 @@ def Rx05_gate(tableau, q):
     '''
     Rx(0.5)
     '''
-    tableau = S_gate(tableau, q)
+    tableau = Phase(tableau, q)
     tableau = Z_gate(tableau, q)
     tableau = Hadamard(tableau, q)
-    tableau = S_gate(tableau, q)
+    tableau = Phase(tableau, q)
     tableau = Z_gate(tableau, q)
     return tableau
 
@@ -64,9 +64,9 @@ def Rx_05_gate(tableau, q):
     '''
     Rx(-0.5)
     '''
-    tableau = S_gate(tableau, q)
+    tableau = Phase(tableau, q)
     tableau = Hadamard(tableau, q)
-    tableau = S_gate(tableau, q)
+    tableau = Phase(tableau, q)
     return tableau
 
 
