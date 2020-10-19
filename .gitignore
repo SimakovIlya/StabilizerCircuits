@@ -21,6 +21,7 @@ Icon
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+.ipynb_checkpoints
 
 # Directories potentially created on remote AFP share
 .AppleDB
