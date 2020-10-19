@@ -1,11 +1,13 @@
 import numpy as np
 from .rowsum import rowsum
-from random import randint
+from random import randint, random
+from .gates import X_gate
 
 
 
 
-def measure(tableau, a):
+
+def measure(tableau, a, eta = np.array([[1, 1, 1], [0, 0, 0]])):
     '''
     Measurement of qubit a in standard basis
 
@@ -36,5 +38,26 @@ def measure(tableau, a):
         tableau[p, 2*n] = randint(0, 1)
         tableau[p, n+a] = 1
         measurement_outcome = -(tableau[p, 2*n]*2-1)
+
+    # add error
+    tmp = random()
+    if measurement_outcome == 1:
+        if tmp > eta[0, 0]:
+            if tmp < eta[0, 1]:
+                tableau = X_gate(tableau, a)
+            elif tmp < eta[0, 2]:
+                measurement_outcome *= -1
+            else:
+                tableau = X_gate(tableau, a)
+                measurement_outcome *= -1
+    elif measurement_outcome == -1:
+        if tmp < eta[1, 2]:
+            if tmp < eta[1, 1]:
+                tableau = X_gate(tableau, a)
+            elif tmp < eta[1, 0]:
+                measurement_outcome *= -1
+            else:
+                tableau = X_gate(tableau, a)
+                measurement_outcome *= -1
 
     return tableau, measurement_outcome
