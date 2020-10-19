@@ -96,7 +96,7 @@ def add_noise_to_measurements(meas, p0, p1):
 					m[i, j, k] = -1
 				elif m[i, j, k] == -1 and r < p1:
 					m[i, j, k] = 1
-	return m
+	return m.astype(np.bool)
 
 
 

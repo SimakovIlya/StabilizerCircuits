@@ -20,7 +20,7 @@ def measure(tableau, a, eta = np.array([[1, 1, 1], [0, 0, 0]])):
     if nonzero_elements.shape[0] == 0:
         # case 2
         # the outcome is determinate, so measuring the state will not change it
-        tableau_tmp = np.vstack((tableau, np.zeros((2*n + 1), dtype = np.int8)))
+        tableau_tmp = np.vstack((tableau, np.zeros((2*n + 1), dtype = np.bool)))
         for i in np.nonzero(tableau[:n, a])[0]:
             tableau_tmp = rowsum(tableau_tmp, 2*n, i+n)
         measurement_outcome = -(tableau_tmp[2*n, 2*n]*2-1)
