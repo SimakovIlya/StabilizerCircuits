@@ -71,6 +71,14 @@ def Rx_05_gate(tableau, q):
 
 
 
+def Hadamard3(tableau, q):
+    tableau = Hadamard(tableau, q)
+    tableau = Hadamard(tableau, q)
+    tableau = Hadamard(tableau, q)
+    return(tableau)
+
+
+
 
 def CNOT(tableau, a, b):
     '''
@@ -93,7 +101,7 @@ def Hadamard(tableau, a):
     '''
     n = tableau.shape[0]//2
     if a >= n:
-        print('Gate error, there is no such qubit!')
+        print('Gate error, there is no such qubit!', a)
     tableau[:, 2*n] = (tableau[:, 2*n] + tableau[:, a]*tableau[:, n+a])%2
     tableau[:, [a, n+a]] = tableau[:, [n+a, a]]
     return tableau
