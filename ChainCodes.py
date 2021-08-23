@@ -98,7 +98,7 @@ class ChainCodes:
                 table_tmp = Ry_05_gate(table_tmp, i)
                 table_tmp_ideal = Ry_05_gate(table_tmp_ideal, i)
             elif basis == 'i+' or basis == 'i-':
-                table_tmp = Rx05_gate(table_tmp, i)
+                table_tmp = Rx_05_gate(table_tmp, i)
                 table_tmp_ideal = Rx05_gate(table_tmp_ideal, i)
 
             table_tmp, m_data[(i-1)//2] = measure(table_tmp, i, self.eta)

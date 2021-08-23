@@ -136,3 +136,16 @@ def iSWAP(tableau, a, b):
     tableau = CNOT(tableau, b, a)
     tableau = Hadamard(tableau, b)
     return tableau
+
+
+
+def CZ(tableau, a, b):
+    '''
+    CZ between qubits a, b
+    '''
+    if a >= tableau.shape[0]//2 or b >= tableau.shape[0]//2:
+        print('Gate error, there is no such qubit!')
+    tableau = Hadamard(tableau, b)
+    tableau = CNOT(tableau, a, b)
+    tableau = Hadamard(tableau, b)
+    return tableau
